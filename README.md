@@ -13,25 +13,21 @@ Using FM-index to backwards search for the  previous char until reaching the bra
 Parsing the number before the bracket and save it into a list. Using std::list::sort()
 and std::list::unique() to get rid of the duplicates.
 
-3. "-a"
+3. "-a": 
 Find the offset numbers  of all the offset blocks containing matched pattern.
 Same as -r option.
 
 ## Index file structure:
 
-	.idx file is created as a binary file to save the snapshots of occurrence for various blocks.
-	 In this case, all the data is saved in fixed length. It makes the program easier to find the 
-	formatted information only using the function  std::ifstream::seekg(OFFSET,POSITION).
+.idx file is created as a binary file to save the snapshots of occurrence for various blocks.
+In this case, all the data is saved in fixed length. It makes the program easier to find the 
+formatted information only using the function  std::ifstream::seekg(OFFSET,POSITION).
 
-	The file stores is consisted of several int[128] array blocks. The first block of array is C[c]
-	array for the whole file. Remains are snapshots for each char's occurrence in various blocks.
+The file stores is consisted of several int[128] array blocks. The first block of array is C[c]
+array for the whole file. Remains are snapshots for each char's occurrence in various blocks.
 
-			C[c]    Occ[char] for 1st blk   Occ[char] for 2st blk          Occ[char] for last blk 
-			  |               |                       |                                |  
-			  |               |                       |                                |  
-			  |               |                       |                                |  
-			  |               |                       |                                |  
-	HEAD  int[128]      int[128]                  int[128]------------------------int[128] EOF
+||C[c]|Occ[char] for 1st blk|Occ[char] for 2st blk|...|Occ[char] for last blk|
+|HEAD|int[128]|int[128]|int[128]|...|int[128] EOF|
 
 	PS. The Occ[] for each char is accumulated.
 
