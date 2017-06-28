@@ -26,7 +26,8 @@ formatted information only using the function  std::ifstream::seekg(OFFSET,POSIT
 The file stores is consisted of several int[128] array blocks. The first block of array is C[c]
 array for the whole file. Remains are snapshots for each char's occurrence in various blocks.
 
-||C[c]|Occ[char] for 1st blk|Occ[char] for 2st blk|...|Occ[char] for last blk|
+||C[c]|Occ[char] for 1st blk|Occ[char] for 2st blk|...|Occ[char] for last blk||
+|---|---|---|---|---|---|---|
 |HEAD|int[128]|int[128]|int[128]|...|int[128] EOF|
 
 	PS. The Occ[] for each char is accumulated.
