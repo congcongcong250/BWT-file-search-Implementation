@@ -1,28 +1,23 @@
-README for bwtsearch COMP9319 Data Compression and Search 
-		by Liren Wang, Student ID z5004424
+# BWTSearch Data Compression and Search 
+by Liren Wang
+## Operations:
+This program implements the BWT backwards search with three options.
 
-Operations:
+1. "-n": 
+Find number of all matches of the pattern in the bwt ehcoded file.
+Using basic BWT backwards search algorithm.
 
-	This program implements the BWT backwards search with three options.
+2. "-r": 
+Find number of all the offset blocks containing matched pattern.
+Using FM-index to backwards search for the  previous char until reaching the bracket.
+Parsing the number before the bracket and save it into a list. Using std::list::sort()
+and std::list::unique() to get rid of the duplicates.
 
-	1.-n
+3. "-a"
+Find the offset numbers  of all the offset blocks containing matched pattern.
+Same as -r option.
 
-		Find number of all matches of the pattern in the bwt ehcoded file.
-		Using basic BWT backwards search algorithm.
-
-	2.-r
-
-		Find number of all the offset blocks containing matched pattern.
-		Using FM-index to backwards search for the  previous char until reaching the bracket.
-		Parsing the number before the bracket and save it into a list. Using std::list::sort()
-		and std::list::unique() to get rid of the duplicates.
-
-	3.-a
-
-		Find the offset numbers  of all the offset blocks containing matched pattern.
-		Same as -r option.
-
-Index file structure:
+## Index file structure:
 
 	.idx file is created as a binary file to save the snapshots of occurrence for various blocks.
 	 In this case, all the data is saved in fixed length. It makes the program easier to find the 
